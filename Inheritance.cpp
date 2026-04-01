@@ -160,19 +160,38 @@ public:
     {
         return _Department;
     }
+
+    // Set My Own new print Function
+    // it should take the same name and signature of the Print method in the super class (clsPerson)
+    // this is called override
+    void Print()
+    {
+        // Remember that you can't reach private members from the super calss
+        // You can just reach Protected and public members
+        std::cout << "Info :";
+        std::cout << "\n------------------------------------";
+        std::cout << "\nID         : " << ID();
+        std::cout << "\nFirst Name : " << GetFirstName();
+        std::cout << "\nLast Name  : " << GetLastName();
+        std::cout << "\nFull Name  : " << GetFullName();
+        std::cout << "\nEmail      : " << GetEmail();
+        std::cout << "\nPhone      : " << GetPhone();
+        // sub class private data members
+        std::cout << "\nTitel      : " << _Title;
+        std::cout << "\nDepartment : " << _Department;
+        std::cout << "\nSalary     : " << _Salary;
+        std::cout << "\n------------------------------------\n";
+    }
 };
 
 int main()
 {
     clsEmployee Employee(10, "Ahmed", "Mohammed", "Ahmed@gmail.com", "023434543456", 2344, "Manager", "IT");
 
-    Employee.Print();
+    Employee.Print(); // setting me own print method
     Employee.SendEmail("Hi", "How are you?");
-    Employee.SendSMS("How are you?");
     std::cout << std::endl;
-    std::cout << Employee.GetSalary() << std::endl;
-    std::cout << Employee.GetTitle() << std::endl;
-    std::cout << Employee.GetDepartment() << std::endl;
+    Employee.SendSMS("How are you?");
 
     std::cin.get();
 }
